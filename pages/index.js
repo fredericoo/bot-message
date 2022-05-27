@@ -16,6 +16,7 @@ export default function Home() {
           ]),
         500 + Math.random() * 1500
       );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages.filter((message) => !message.isBot).length]);
 
   return (
@@ -26,8 +27,8 @@ export default function Home() {
       overflowY="scroll"
     >
       <Stack marginBottom={"8"} flexGrow="1" justifyContent={"flex-end"}>
-        {messages.map((message) => (
-          <ChatBubble isBot={message.isBot}>{message.text}</ChatBubble>
+        {messages.map((message, i) => (
+          <ChatBubble key={i} isBot={message.isBot}>{message.text}</ChatBubble>
         ))}
       </Stack>
       <Box
